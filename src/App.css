@@ -14,6 +14,7 @@
     --mainBlack: rgb(0, 0, 0);
     --mainGrey: #ececec;
     --darkGrey: #cfcfcf;
+    --subText: 'Sunflower', sans-serif;
   }
   
   body {

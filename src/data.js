@@ -61,7 +61,7 @@ export const storeProducts = [
         category: "men",
         price: 19.02,
         size: {
-            dimension: ['42', '43', '44', '45'],
+            size:['42', '43', '44', '45'],
             amount: [45, 50, 35, 23]
         },
         color: ['black', 'white'],
@@ -86,7 +86,7 @@ export const storeProducts = [
         category: "accessories",
         price: 28.56,
         size: {
-            dimension: ['s', 'm', 'l', 'xl'],
+            size: ['s', 'm', 'l', 'xl'],
             amount: [145, 500, 350, 123]
         },
         color: ['black'],
@@ -111,7 +111,7 @@ export const storeProducts = [
         category: "women",
         price: 25.64,
         size: {
-            dimension: ['40x60', '60x90', '80x120'],
+            size: ['40x60', '60x90', '80x120'],
             amount: [145, 500, 350]
         },
         color: ['blue'],
@@ -136,7 +136,7 @@ export const storeProducts = [
         category: "men",
         price: 25.99,
         size: {
-            dimension: ['40x60', '60x90', '80x120'],
+            size: ['40x60', '60x90', '80x120'],
             amount: [45, 500, 250]
         },
         color: ['black'],
@@ -161,10 +161,10 @@ export const storeProducts = [
         category: "bags",
         price: 11.40,
         size: {
-            paperType: ['ruled', 'plain', 'doted', 'squarred'],
+            size: ['ruled', 'plain', 'doted', 'squarred'],
             amount: [45, 50, 25, 0]
         },
-        color: ['lightbrown'],
+        color: ['brown'],
         tax: "excluded",
         stock: true,
         delivery: [true, 1, 3, 'weeks'],
@@ -186,7 +186,7 @@ export const storeProducts = [
         category: "bags",
         price: 11.40,
         size: {
-            paperType: ['ruled', 'plain', 'doted', 'squarred'],
+            size: ['ruled', 'plain', 'doted', 'squarred'],
             amount: [45, 50, 25, 0]
         },
         color: ['black'],
@@ -211,7 +211,7 @@ export const storeProducts = [
         category: "bags",
         price: 15.40,
         size: {
-            paperType: ['ruled', 'plain', 'doted', 'squarred'],
+            size: ['ruled', 'plain', 'doted', 'squarred'],
             amount: [25, 45, 5, 10]
         },
         color: ['blue'],
@@ -239,7 +239,7 @@ export const storeProducts = [
             size: ['standart'],
             amount: [250]
         },
-        color: ['black', 'lightbrown'],
+        color: ['black', 'brown'],
         tax: "excluded",
         stock: true,
         delivery: [true, 1, 3, 'weeks'],
@@ -289,7 +289,7 @@ export const storeProducts = [
             size: ['standart'],
             amount: [250]
         },
-        color: ['gray','black'],
+        color: ['grey','black'],
         tax: "excluded",
         stock: true,
         delivery: [true, 1, 3, 'days'],
