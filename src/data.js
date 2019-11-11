@@ -353,7 +353,29 @@ export const storeProducts = [
         count: 0,
         total: 0
     },
-
-
-
 ];
+
+export const detailProduct = {
+                                id: 12,
+                                title: "striped braid trilby",
+                                brand: '/img/graphiccorner.jpg',
+                                category: "accessories",
+                                price: 7.96,
+                                size: {
+                                    size: ['standart'],
+                                    amount: [250]
+                                },
+                                color: ['blue'],
+                                tax: "excluded",
+                                stock: true,
+                                delivery: [true, 1, 3, 'days'],
+                                img: ["/img/12/main.jpg", "/img/12/main2.jpg", "/img/12/1.jpg", "/img/12/2.jpg"],
+                                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                                details: ["Aenean auctor sem ac ex efficitur", "Non mattis odio bibendum", "Sed vitae enim at tortor finibus", "Integer facilisis eleifend vehicula", "In hac habitasse platea dictumst"],
+                                newItem: true,
+                                discountRate: 0, 
+                                featured: false,
+                                inCart: false,
+                                count: 0,
+                                total: 0
+                            };

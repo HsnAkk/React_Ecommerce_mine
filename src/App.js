@@ -8,7 +8,7 @@ import Blog from './components/BlogPage/Blog';
 import Contact from './components/ContactPage/Contact';
 import Error from './components/Error';
 import CategoryItem from './components/Shopping/CategoryItem';
-//import Product from './components/Product';
+import Details from './components/Details';
 
 import './App.css';
 
@@ -23,7 +23,7 @@ class App extends Component {
           <Route exact path="/" component = { Home } />
           <Route exact path="/shop" component = { Shop } />
           <Route exact path="/shop/:category" component = { CategoryItem } />
-          {/* <Route  path="/shop/:category/:product" component = { Details } /> */}
+          <Route  path="/details" component = { Details } />
           <Route  path="/about" component = { About } />
           <Route  path="/blog" component = { Blog } />
           <Route  path="/contact" component = { Contact } />

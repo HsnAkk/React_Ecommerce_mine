@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { pulse } from 'react-animations';
-// import { Link } from 'react-router-dom';
-// import { ProductConsumer } from '../../context';
+import { Link } from 'react-router-dom';
+import { ProductConsumer } from '../context';
+
 // import PropTypes from 'prop-types';
 
 
@@ -21,30 +22,28 @@ class Product extends Component {
 
     
     render() {
-        const { title, price, img, discountRate, newItem } = this.props.product;
+        const { id, title, price, img, discountRate, newItem } = this.props.product;
         console.log(this.props.product);
         return (
-          
             <div className="col-12 col-md-6 col-lg-4 col-xl-3 my-3">
-                <AnimationDiv>
-                    <img className="img-fluid" src = {this.state.mouseOver ? img[1] : img[0]} alt="product" onMouseOver= {this.onMouseHandler} onMouseLeave= {this.onMouseHandler}/>
-                    { newItem ? <div className="newItem">new</div> : null }
-                    { discountRate ? <div className="discountItem">{discountRate} % </div> : null }
-                </AnimationDiv>
-            
-                {/* {   this.state.mouseOver ? 
-                        <div>
-                            
-                            
-                            <h6 className="px-2 pt-4 text-capitalize">{ title }</h6>
-                            {discountRate ? <p className="px-2"><strong>$ {price}  </strong><span style={{textDecoration:'line-through', fontSize:'0.9rem', color:'grey'}}>{parseFloat(price*(100+discountRate)/100).toFixed(2)}</span></p> : <p className="px-2"><span style={{fontSize:'0.9rem', color:'grey'}}>From  </span><strong>$ {price}</strong></p>}
-                        
-                        </div> :  */}
-                        <div>
-                            <h6 className="px-2 pt-4 text-capitalize">{ title }</h6>
+                <ProductConsumer>
+                    {(value) => (
+                                <AnimationDiv onClick={ () => value.handleDetail(id)}>
+                                    <Link to='/details'>
+                                        <img className="img-fluid" src = {this.state.mouseOver ? img[1] : img[0]} alt="product" onMouseOver= {this.onMouseHandler} onMouseLeave= {this.onMouseHandler}/>
+                                    </Link>
+                                    { newItem ? <div className="newItem">new</div> : null }
+                                    { discountRate ? <div className="discountItem">{discountRate} % </div> : null }
+                                </AnimationDiv>
+                                )
+                    }
+                </ProductConsumer>
 
-                            {discountRate ? <p className="px-2"><strong>$ {price}  </strong><span style={{textDecoration:'line-through', fontSize:'0.9rem', color:'grey'}}>{parseFloat(price*(100+discountRate)/100).toFixed(2)}</span></p> : <p className="px-2"><span style={{fontSize:'0.9rem', color:'grey'}}>From  </span><strong>$ {price}</strong></p>}
-                        </div>
+                <div>
+                    <h6 className="px-2 pt-4 text-capitalize">{ title }</h6>
+
+                    {discountRate ? <p className="px-2"><strong>$ {price}  </strong><span style={{textDecoration:'line-through', fontSize:'0.9rem', color:'grey'}}>{parseFloat(price*(100+discountRate)/100).toFixed(2)}</span></p> : <p className="px-2"><span style={{fontSize:'0.9rem', color:'grey'}}>From  </span><strong>$ {price}</strong></p>}
+                </div>
                 
                 
         

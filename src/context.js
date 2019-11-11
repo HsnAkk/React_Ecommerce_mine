@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { storeProducts } from './data';
+import { storeProducts, detailProduct } from './data';
 
 
 
@@ -10,8 +10,8 @@ const ProductContext = React.createContext();
 class ProductProvider extends Component {
     state= {
         products : [],                // to prevent the reference error, it is an empty array
-        featuredProducts : []
-        // detailProduct : detailProduct,
+        featuredProducts : [],
+        detailProduct : detailProduct
         // cart : [],
         // modalOpen : false,
         // modalProduct : detailProduct,
@@ -35,24 +35,24 @@ class ProductProvider extends Component {
 
 
         this.setState( () => {
-            return { products: tempProducts,
-                     featuredProducts
+            return {products: tempProducts,
+                    featuredProducts
             };
         });
     }
 
-    // getItem = (id) => {
-    //     const product = this.state.products.find( item => item.id === id);
-    //     return product;
-    // }
+    getItem = (id) => {
+        const product = this.state.products.find( item => item.id === id);
+        return product;
+    }
 
 
-    // handleDetail = (id) => {
-    //     const product = this.getItem(id);
-    //     this.setState( () => {
-    //         return { detailProduct : product}
-    //     });
-    // }
+    handleDetail = (id) => {
+        const product = this.getItem(id);
+        this.setState( () => {
+            return { detailProduct : product}
+        });
+    }
 
     // addToCart = (id) => {
     //     let tempProducts = [...this.state.products];
@@ -168,8 +168,8 @@ class ProductProvider extends Component {
     render() {
         
         return (
-            <ProductContext.Provider value={{ ...this.state
-                                            // handleDetail: this.handleDetail,
+            <ProductContext.Provider value={{   ...this.state,
+                                                handleDetail: this.handleDetail
                                             // addToCart: this.addToCart,
                                             // openModal: this.openModal,
                                             // closeModal: this.closeModal,
