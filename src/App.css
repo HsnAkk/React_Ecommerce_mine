@@ -1,22 +1,29 @@
-.App {
-  text-align: center;
-}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-.App-logo {
-  height: 40vmin;
-}
+:root {
+    --mainBlue:#2a2a72;
+    --lightBlue:#009ffd;
+    --mainDark:#232528;
+    --mainYellow:#ffa400;
+    --mainWhite: #fff;
+    --offWhite: #f7f7f7;
+    --mainBlack: rgb(0, 0, 0);
+    --mainGrey: #ececec;
+    --darkGrey: #cfcfcf;
+  }
+  
+  body {
+    font-family: 'Josefin Sans', sans-serif !important;
+    background: var(--mainWhite) !important;
+    color: var(--mainBlack) !important;
+  }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
+  input[type='text']:focus,  input[type='password']:focus {
+    border-color: var(--mainYellow) !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px var(--mainYellow) !important;
+    outline: 0 none !important;
+  }
