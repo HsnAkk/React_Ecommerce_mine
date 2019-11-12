@@ -30,7 +30,7 @@ class Product extends Component {
                     {(value) => (
                                 <AnimationDiv onClick={ () => value.handleDetail(id)}>
                                     <Link to='/details'>
-                                        <img className="img-fluid" src = {this.state.mouseOver ? img[1] : img[0]} alt="product" onMouseOver= {this.onMouseHandler} onMouseLeave= {this.onMouseHandler}/>
+                                        <img className="img-fluid" src = {this.state.mouseOver ? img[1] : img[0]} alt="product" onMouseOver= {this.onMouseHandler} onMouseLeave= {this.onMouseHandler} width="100%"/>
                                     </Link>
                                     { newItem ? <div className="newItem">new</div> : null }
                                     { discountRate ? <div className="discountItem">{discountRate} % </div> : null }

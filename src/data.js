@@ -45,11 +45,6 @@ export const categories = [
     [4, 'bags', {
         title: "Framed poster and vector images, all you need to give personality to your walls or bring your creative projects to life.",
         img: "/img/categories/bags.jpg"
-    }],
-
-    [5, 'stationery', {
-        title: "Notebooks, agendas, office accessories and more. Everything you need to combine the pleasant and the useful, either at work or at home.",
-        img: "/img/categories/stationery.jpg"
     }]
 ];
 
@@ -258,7 +253,7 @@ export const storeProducts = [
         id: 9,
         title: "ear headphones",
         brand: '/img/studiodesign.jpg',
-        category: "stationery",
+        category: "accessories",
         price: 36.71,
         size: {
             size: ['standart'],

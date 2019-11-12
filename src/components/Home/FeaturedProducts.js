@@ -10,7 +10,7 @@ class FeaturedProducts extends Component {
         return (
             <>
                 <div className="py-3">
-                    <div className="container-fluid">
+                    <div style={{width: '90%', margin: ' 0 auto'}}>
                         <div className="row">
                             <ProductConsumer>
                                 { value => {

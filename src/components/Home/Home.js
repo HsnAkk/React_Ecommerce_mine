@@ -10,7 +10,7 @@ class Home extends Component {
         return (
             <>
               <CarouselShow /> 
-              <Title title="featured" />
+              <Title title="featured products"  subtitle="Browse our website for the hottest items in the marketplace now"/>
               <FeaturedProducts />
 
             </>

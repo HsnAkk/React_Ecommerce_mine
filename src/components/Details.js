@@ -22,9 +22,10 @@ class Details extends Component {
 
     
     changeImage = (e) => {        
-        
         this.setState({ changeImage: e.target.src})
+        e.target.classList.add('border-warning');
     }
+
 
     render() {
         const uuidv4 = require('uuid/v4');
@@ -36,19 +37,19 @@ class Details extends Component {
                     const { id, title, brand, price, size, color, tax, stock, delivery, img, description, details, newItem, discountRate } = value.detailProduct;
                     
                     return (
-                        <>
+                        < div>
                             <Breadcrumbs />  
-                            <div className="container-fluid">
+                            <div style={{width: '90%', margin: ' 0 auto'}}>
                                 <div className="row">
                                     <AnimationDiv className="col-12 col-lg-5 mt-5">
-                                        <img className="img-fluid" src = {this.state.changeImage ? this.state.changeImage : img[0]} alt="product" width="100%" height="500px"/>
+                                        <img className="img-fluid" src = {this.state.changeImage ? this.state.changeImage : img[0]} alt="product" width='100%'/>
                                         { newItem ? <div className="newItem">new</div> : null }
                                         { discountRate ? <div className="discountItem">{discountRate} % </div> : null }
                                         <div className="row justify-content-start">
                                             {img.map(image => (
                                                 img.indexOf(image) === 0 ? 
-                                                <img key={uuidv4()} src={image} width="100px" height="130px"  alt="product images" className= "ml-3 mr-2 mt-3 border" onClick={this.changeImage}/> :
-                                                <img key={uuidv4()} src={image} width="100px" height="130px"  alt="product images" className="ml-3 mr-2 mt-3 border" onClick={this.changeImage}/>
+                                                <img key={uuidv4()} src={image} width="105px" height="130px"  alt="product images" className= "ml-3 mr-2 mt-3 border border-warning" onClick={this.changeImage}/> :
+                                                <img key={uuidv4()} src={image} width="100px" height="130px"  alt="product images" className="ml-3 mr-2 mt-3 border border-warning" onClick={this.changeImage}/>
                                             ))}
                                         </div>
                                     </AnimationDiv>
@@ -62,7 +63,7 @@ class Details extends Component {
 
                                         {delivery[0] ? <h6 className="my-2" style={{color:'grey'}}>Delivery : <span style={{fontSize: '0.9rem', fontFamily: 'var(--subText)'}}> {delivery[1]} to {delivery[2]} {delivery[3]}</span></h6> : null}
                                         
-                                        {stock ? <h6 className="my-2" style={{background:'#D4EDDA', display:'inline-block', padding:'3px 7px', color:'green'}}>✔ In Stock</h6> : null}
+                                        {stock ? <h6 className="my-2" style={{background:'#D4EDDA', display:'inline-block', padding:'5px 7px', color:'green'}}>✔ In Stock</h6> : null}
 
                                         <table className="my-4" style={{width: '180px'}}>
                                             <tbody>
@@ -100,33 +101,33 @@ class Details extends Component {
                                             </tbody>
                                         </table>
                                         <hr/>
-                                        <div>
-                                            <ButtonSpan>add to cart</ButtonSpan>
-                                            <ButtonSpan><FaRegHeart /></ButtonSpan>
-                                            <ButtonSpan><IoMdGitCompare /></ButtonSpan>
+                                        <div className="my-4 py-2">
+                                            <ButtonSpan title="Add to Cart">add to cart</ButtonSpan>
+                                            <ButtonSpan title="Add to Wishlist"><FaRegHeart /></ButtonSpan>
+                                            <ButtonSpan title="Add to Compare"><IoMdGitCompare /></ButtonSpan>
                                         </div>
                                         <hr/>
                                     </div>
                                 </div>
-                                <div className="row justify-content-center mt-5 px-5">
+                                <div className="row justify-content-center mt-4 px-3">
                                     <Tabs defaultActiveKey="description" style={{fontSize: '25px', paddingBottom:'30px', fontFamily: 'var(--subText)', fontColor: 'red'}}>
                                         <Tab eventKey="description" title="Description">
                                             <div>
-                                                <p>{description}</p>
+                                                <p style={{color: 'grey',fontSize: '0.95rem', fontFamily: 'var(--subText)', paddingTop: '20px'}}>{description}</p>
                                                 <ul>
                                                     {details.map(item => ( 
-                                                        <li key={uuidv4()} style={{listStyleType: 'none'}}><GoCheck /> {item}</li>
+                                                        <li key={uuidv4()} style={{listStyleType: 'none', color: 'grey',fontSize: '0.95rem', fontFamily: 'var(--subText)'}}><GoCheck /> {item}</li>
                                                     ))}
                                                 </ul>
                                             </div>
                                         </Tab>
                                         <Tab eventKey="reviews" title="Reviews">
-                                            <p>{description}</p>
+                                            <p style={{color: 'grey',fontSize: '0.95rem', fontFamily: 'var(--subText)', paddingTop: '20px'}}>{description}</p>
                                         </Tab>
                                     </Tabs>
                                 </div>
                             </div>
-                        </>
+                        </div>
                     );
                 }}
             </ProductConsumer>
@@ -183,16 +184,17 @@ const ColorDiv = styled.div`
 
 const ButtonSpan = styled.span`
 height: 40px;
-padding: 10px;
+padding: 15px;
 border: 1px solid grey;
 text-transform: uppercase;
-margin:3px;
+margin: 5px;
 color: var(--mainYellow);
-font-size: 20px;
+font-size: 15px;
 &:hover {
-    color: black;
+    color: white;
     background: var(--mainYellow);
     border: none;
+    cursor: pointer;
 }
 `;
 

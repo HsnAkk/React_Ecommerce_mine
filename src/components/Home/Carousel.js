@@ -27,7 +27,7 @@ class CarouselShow extends React.Component {
                         className="d-block w-100"
                         src={item.src}
                         alt="carousel item"
-                        height= '600px'
+                        height= '700px'
                     />
              
                     <Carousel.Caption style={textStyle}>
