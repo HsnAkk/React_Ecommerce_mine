@@ -33,7 +33,6 @@ class ProductProvider extends Component {
         
         let featuredProducts = tempProducts.filter(product => product.featured === true);
 
-
         this.setState( () => {
             return {products: tempProducts,
                     featuredProducts

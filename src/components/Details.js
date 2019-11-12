@@ -4,22 +4,31 @@ import { ProductConsumer } from '../context';
 import Breadcrumbs from '../components/Breadcrumbs';
 import styled, { keyframes } from 'styled-components';
 import { pulse } from 'react-animations';
-import { ButtonToolbar, Button } from 'react-bootstrap';
+import { ButtonToolbar, Button, Tabs, Tab } from 'react-bootstrap';
+import { FaRegHeart } from 'react-icons/fa';
+//import { IoIosArrowUp } from 'react-icons/io';
+//import { IoIosArrowDown } from 'react-icons/io';
+import { IoMdGitCompare } from 'react-icons/io';
+import { GoCheck } from 'react-icons/go';
+
+
 
 class Details extends Component {
 
     state = {
-        mouseOver: false
+        mouseOver: false,
+        changeImage: ''
     }
 
-    onMouseHandler = () => {
-        this.setState({
-            mouseOver: !this.state.mouseOver
-        })
+    
+    changeImage = (e) => {        
+        
+        this.setState({ changeImage: e.target.src})
     }
-
 
     render() {
+        const uuidv4 = require('uuid/v4');
+
         return (
             
             <ProductConsumer>
@@ -32,9 +41,16 @@ class Details extends Component {
                             <div className="container-fluid">
                                 <div className="row">
                                     <AnimationDiv className="col-12 col-lg-5 mt-5">
-                                        <img className="img-fluid" src = {img[0]} alt="product" onMouseOver= {this.onMouseHandler} onMouseLeave= {this.onMouseHandler}/>
+                                        <img className="img-fluid" src = {this.state.changeImage ? this.state.changeImage : img[0]} alt="product" width="100%" height="500px"/>
                                         { newItem ? <div className="newItem">new</div> : null }
                                         { discountRate ? <div className="discountItem">{discountRate} % </div> : null }
+                                        <div className="row justify-content-start">
+                                            {img.map(image => (
+                                                img.indexOf(image) === 0 ? 
+                                                <img key={uuidv4()} src={image} width="100px" height="130px"  alt="product images" className= "ml-3 mr-2 mt-3 border" onClick={this.changeImage}/> :
+                                                <img key={uuidv4()} src={image} width="100px" height="130px"  alt="product images" className="ml-3 mr-2 mt-3 border" onClick={this.changeImage}/>
+                                            ))}
+                                        </div>
                                     </AnimationDiv>
                                     <div className="col-12 col-lg-6 mt-5 ml-3">
                                         <h1 className="text-capitalize mb-3">{title}</h1>
@@ -46,44 +62,68 @@ class Details extends Component {
 
                                         {delivery[0] ? <h6 className="my-2" style={{color:'grey'}}>Delivery : <span style={{fontSize: '0.9rem', fontFamily: 'var(--subText)'}}> {delivery[1]} to {delivery[2]} {delivery[3]}</span></h6> : null}
                                         
-                                        <h6 className="my-2" style={{background:'#D4EDDA', display:'inline-block', padding:'3px 7px', color:'green'}}>✔ In Stock</h6>
+                                        {stock ? <h6 className="my-2" style={{background:'#D4EDDA', display:'inline-block', padding:'3px 7px', color:'green'}}>✔ In Stock</h6> : null}
 
                                         <table className="my-4" style={{width: '180px'}}>
-                                            <tr>
-                                                <td>Brand</td>
-                                                <td><img src={brand} alt="brand" width="50px"height="30px"/> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>In Stock</td>
-                                                <td style={{color: 'grey',fontSize: '0.9rem', fontFamily: 'var(--subText)'}}>{size.amount[0]} items</td>
-                                            </tr>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Brand</td>
+                                                    <td><img src={brand} alt="brand" width="50px"height="30px"/> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>In Stock</td>
+                                                    <td style={{color: 'grey',fontSize: '0.9rem', fontFamily: 'var(--subText)'}}>{size.amount[0]} items</td>
+                                                </tr>
+                                            </tbody>
                                         </table>
                                         <p className="my-4" style={{color: 'grey',fontSize: '0.95rem', fontFamily: 'var(--subText)'}}>{description}</p>
                                         <table className="my-4" style={{width: 'auto'}}>
-                                            <tr className="my-5">
-                                                <td className="pr-5" >Size</td>
-                                                <td>
-                                                    <ButtonToolbar>
-                                                        { size.size.map(item => (
-                                                            <Button className="mx-2 btn-sm text-uppercase" variant="outline-warning">{ item}</Button>
-                                                        ))}
-                                                    </ButtonToolbar>
-                                                </td>
-                                            </tr>
-                                            <tr className="my-5">
-                                                <td className="pt-2 pr-5">Color</td>
-                                                <td>
-                                                    { color.map(item => (
-                                                        <ColorDiv className="pt-2" style={{background: item }}></ColorDiv>
-                                                    ))} 
-                                                </td>
-                                            </tr>
+                                            <tbody>
+                                                <tr className="my-5">
+                                                    <td className="pr-5" >Size</td>
+                                                    <td>
+                                                        <ButtonToolbar>
+                                                            { size.size.map(item => (
+                                                                <Button key={uuidv4()} className="mx-2 btn-sm text-uppercase" variant="outline-warning">{ item}</Button>
+                                                            ))}
+                                                        </ButtonToolbar>
+                                                    </td>
+                                                </tr>
+                                                <tr className="my-5">
+                                                    <td className="pt-2 pr-5">Color</td>
+                                                    <td>
+                                                        { color.map(item => (
+                                                            <ColorDiv key={uuidv4()} className="pt-2" style={{background: item }}></ColorDiv>
+                                                        ))} 
+                                                    </td>
+                                                </tr>
+                                            </tbody>
                                         </table>
                                         <hr/>
                                         <div>
-                                            
+                                            <ButtonSpan>add to cart</ButtonSpan>
+                                            <ButtonSpan><FaRegHeart /></ButtonSpan>
+                                            <ButtonSpan><IoMdGitCompare /></ButtonSpan>
                                         </div>
+                                        <hr/>
                                     </div>
+                                </div>
+                                <div className="row justify-content-center mt-5 px-5">
+                                    <Tabs defaultActiveKey="description" style={{fontSize: '25px', paddingBottom:'30px', fontFamily: 'var(--subText)', fontColor: 'red'}}>
+                                        <Tab eventKey="description" title="Description">
+                                            <div>
+                                                <p>{description}</p>
+                                                <ul>
+                                                    {details.map(item => ( 
+                                                        <li key={uuidv4()} style={{listStyleType: 'none'}}><GoCheck /> {item}</li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="reviews" title="Reviews">
+                                            <p>{description}</p>
+                                        </Tab>
+                                    </Tabs>
                                 </div>
                             </div>
                         </>
@@ -94,7 +134,7 @@ class Details extends Component {
     }
 }
 
-const Animation = keyframes`${pulse}`;
+//const Animation = keyframes`${pulse}`;
  
 const AnimationDiv = styled.div`
     position: relative;
@@ -140,5 +180,22 @@ const ColorDiv = styled.div`
     }
    
 `;
+
+const ButtonSpan = styled.span`
+height: 40px;
+padding: 10px;
+border: 1px solid grey;
+text-transform: uppercase;
+margin:3px;
+color: var(--mainYellow);
+font-size: 20px;
+&:hover {
+    color: black;
+    background: var(--mainYellow);
+    border: none;
+}
+`;
+
+
 
 export default Details;
