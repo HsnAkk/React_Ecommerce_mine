@@ -19,11 +19,10 @@ class Product extends Component {
             mouseOver: !this.state.mouseOver
         })
     }
-
-    
+ 
     render() {
         const { id, title, price, img, discountRate, newItem } = this.props.product;
-        console.log(this.props.product);
+        
         return (
             <div className="col-12 col-md-6 col-lg-4 col-xl-3 my-3">
                 <ProductConsumer>

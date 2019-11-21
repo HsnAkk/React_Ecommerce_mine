@@ -3,10 +3,10 @@ import Product from '../Product';
 import Title from '../Title';
 import { ProductConsumer } from '../../context';
 import Breadcrumbs from '../Breadcrumbs';
-import FilterBy from '../FilterBy';
+import FilterByCategory from '../FilterByCategory';
 
 
-class ProductList extends Component {
+class CategoryItem extends Component {
     
     render() {
        
@@ -31,7 +31,7 @@ class ProductList extends Component {
                             <div className="m-2">
                             <h2 className="pl-2">Filter By</h2>
                             <hr/>
-                            <FilterBy />
+                            <FilterByCategory />
                             </div>
                         </div>
                         <div className="col-12 col-lg-10">
@@ -39,7 +39,9 @@ class ProductList extends Component {
                                 <div className="row">
                                     <ProductConsumer>
                                         { value => {
-                                            return value.products.filter(product => product.category === path).map( product => {
+                                            const { sortedProductsCategoryItems } = value;
+
+                                            return sortedProductsCategoryItems.map( product => {
                                                 return <Product key={product.id} product={product} />
                                             });
                                         }}
@@ -48,16 +50,10 @@ class ProductList extends Component {
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-                    
                 </div>
             </div>
         )
     }
 }
 
-export default ProductList;
+export default CategoryItem;
