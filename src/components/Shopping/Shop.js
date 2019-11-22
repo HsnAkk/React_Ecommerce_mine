@@ -5,6 +5,8 @@ import ProductList from './ProductList';
 import Title from '../Title';
 import Categories from './Categories';
 import FilterBy from '../FilterBy';
+import CartItemsNumber from '../CartItemsNumber';
+
 
 class Shop extends Component {
     render() {
@@ -30,6 +32,7 @@ class Shop extends Component {
                                 <ProductList />
                             </div>
                         </div>
+                        <CartItemsNumber />
                     </div>
                 </div>               
             </>

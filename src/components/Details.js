@@ -10,6 +10,7 @@ import { FaRegHeart } from 'react-icons/fa';
 //import { IoIosArrowDown } from 'react-icons/io';
 import { IoMdGitCompare } from 'react-icons/io';
 import { GoCheck } from 'react-icons/go';
+import CartItemsNumber from './CartItemsNumber';
 
 
 
@@ -34,7 +35,7 @@ class Details extends Component {
             
             <ProductConsumer>
                 { value => {
-                    const { id, title, brand, price, size, color, tax, stock, delivery, img, description, details, newItem, discountRate } = value.detailProduct;
+                    const { id, title, brand, price, size, color, tax, stock, delivery, img, description, details, newItem, discountRate, inCart } = value.detailProduct;
                     
                     return (
                         < div>
@@ -101,10 +102,31 @@ class Details extends Component {
                                             </tbody>
                                         </table>
                                         <hr/>
-                                        <div className="my-4 py-2">
-                                            <ButtonSpan title="Add to Cart">add to cart</ButtonSpan>
-                                            <ButtonSpan title="Add to Wishlist"><FaRegHeart /></ButtonSpan>
-                                            <ButtonSpan title="Add to Compare"><IoMdGitCompare /></ButtonSpan>
+                                        <div className="row">
+                                            <div className="col my-4 py-2">
+                                                <ButtonSpan title="Add to Cart" 
+                                                    disabled={ inCart ? true : false } 
+                                                    onClick={ () => {   value.addToCart(id);
+                                                                        value.openModal(id);
+                                                                    }
+                                                            }
+                                                >
+                                                    { inCart ? <span>in cart</span> : <span>add cart</span>}
+                                                </ButtonSpan>
+                                                <ButtonSpan title="Add to Wishlist"><FaRegHeart /></ButtonSpan>
+                                                <ButtonSpan title="Add to Compare"><IoMdGitCompare /></ButtonSpan>
+                                            </div>
+                                            <div className="col my-4 py-2">
+                                            <Link to="/cart">
+                                                    <ButtonSpan className="linkto" title="Back to Home" >Go to Cart </ButtonSpan>
+                                                </Link>
+                                                <Link to="/">
+                                                    <ButtonSpan className="linkto" title="Back to Home" >Home </ButtonSpan>
+                                                </Link>
+                                                <Link to="/shop">
+                                                    <ButtonSpan className="linkto" title="Back to Shopping" >Shopping</ButtonSpan>
+                                                </Link>
+                                            </div>
                                         </div>
                                         <hr/>
                                     </div>
@@ -127,6 +149,7 @@ class Details extends Component {
                                     </Tabs>
                                 </div>
                             </div>
+                            <CartItemsNumber />
                         </div>
                     );
                 }}
@@ -182,7 +205,8 @@ const ColorDiv = styled.div`
    
 `;
 
-const ButtonSpan = styled.span`
+const ButtonSpan = styled.div`
+display: inline;
 height: 40px;
 padding: 15px;
 border: 1px solid grey;
@@ -196,6 +220,20 @@ font-size: 15px;
     border: none;
     cursor: pointer;
 }
+
+&.linkto {
+    text-decoration: none !important;
+    background: var(--mainYellow);
+    color: white;
+    border: none;
+}
+&.linkto:hover {
+    text-decoration: none !important;
+    background: black;
+    padding-bottom: 10px;
+
+}
+
 `;
 
 

@@ -9,18 +9,18 @@ import { ProductConsumer } from '../../context';
 class Categories extends Component {
 
     render() {
-        const categoryItems = categories.map( item => {
+        const categoryItems = categories.map( (item, index) => {
             let pathName = "/shop/"+item[1];
             
             return (
 
-                <ProductConsumer>
+                <ProductConsumer key={index}>
                     { value => {
                         const { selectedCategory }  = value;
             
                         return (
 
-                            <div key={item[0]} className=" col-12 col-md-6 col-lg-4 col-xl-3 my-3">
+                            <div className=" col-12 col-md-6 col-lg-4 col-xl-3 my-3">
                                 <Link to={pathName}>
                                     <AnimationDiv>
                                         <img src={item[2].img} className="img-fluid" alt="category" style={{height: '300px'}} onClick={() => selectedCategory(item[1])} />

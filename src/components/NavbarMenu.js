@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Badge } from 'react-bootstrap';
 import LoginMenu from './LoginMenu';
-
+import { ProductConsumer } from '../context';
 
 
  class NavbarMenu extends Component {
@@ -27,41 +27,50 @@ import LoginMenu from './LoginMenu';
     render() {
 
         return (
+            <ProductConsumer>
+                { value => {
+                    const { cart } = value;
 
-            <>
-            <NavWrapper className="navbar navbar-expand-md">
-                <MdFormatAlignLeft className="mr-3" style={{fontSize: '20px', cursor: 'pointer'}} />
+                    return (
+                        <div>
+                            <NavWrapper className="navbar navbar-expand-md">
+                                <MdFormatAlignLeft className="mr-3" style={{fontSize: '20px', cursor: 'pointer'}} />
 
-                <ul className="navbar-nav">
-                    <li className="nav-item mx-2">
-                        <Link to="/" className='nav-link'>home</Link>
-                    </li>
-                    <li className="nav-item mx-2">
-                        <Link to="/shop" className='nav-link'>shopping</Link>
-                    </li>
-                    <li className="nav-item mx-2">
-                        <Link to="/about" className='nav-link'>About</Link>
-                    </li>
-                    <li className="nav-item mx-2">
-                        <Link to="/blog" className='nav-link'>Blog</Link>
-                    </li>
-                    <li className="nav-item mx-2">
-                        <Link to="/contact" className='nav-link'>contact</Link>
-                    </li>
-                </ul>
+                                <ul className="navbar-nav">
+                                    <li className="nav-item mx-2">
+                                        <Link to="/" className='nav-link'>home</Link>
+                                    </li>
+                                    <li className="nav-item mx-2">
+                                        <Link to="/shop" className='nav-link'>shopping</Link>
+                                    </li>
+                                    <li className="nav-item mx-2">
+                                        <Link to="/about" className='nav-link'>About</Link>
+                                    </li>
+                                    <li className="nav-item mx-2">
+                                        <Link to="/blog" className='nav-link'>Blog</Link>
+                                    </li>
+                                    <li className="nav-item mx-2">
+                                        <Link to="/contact" className='nav-link'>contact</Link>
+                                    </li>
+                                </ul>
 
-                <ul className="navbar-nav ml-auto">
-                    <li className="nav-item mx-2">
-                        <MdPersonOutline className='nav-right mx-3' onClick={this.loginHandle} /> 
-                        <FaRegHeart className='nav-right ml-3'/>
-                        <Badge className="rounded-circle" variant="warning" style={{transform: "translate(-4px, -10px)"}} >0</Badge>
-                        <FiShoppingCart className='nav-right ml-3'/>
-                        <Badge className="rounded-circle" variant="warning" style={{transform: "translate(-4px, -10px)"}} >0</Badge>
-                    </li>
-                </ul>
-            </NavWrapper>
-            { this.state.login ? <LoginMenu  /> : null}
-            </>
+                                <ul className="navbar-nav ml-auto">
+                                    <li className="nav-item mx-2">
+                                        <MdPersonOutline className='nav-right mx-3' onClick={this.loginHandle} /> 
+                                        <FaRegHeart className='nav-right ml-3'/>
+                                        <Badge className="rounded-circle" variant="warning" style={{transform: "translate(-4px, -10px)"}} >0</Badge>
+                                        <Link to="/cart">
+                                            <FiShoppingCart className='nav-right ml-3'/>
+                                            <Badge className="rounded-circle" variant="warning" style={{transform: "translate(-4px, -10px)"}} >{cart.length}</Badge>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </NavWrapper>
+                            { this.state.login ? <LoginMenu  /> : null}
+                        </div>
+                    )
+                }}
+            </ProductConsumer>
         )
     }
 }

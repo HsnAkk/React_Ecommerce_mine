@@ -4,6 +4,7 @@ import Title from '../Title';
 import { ProductConsumer } from '../../context';
 import Breadcrumbs from '../Breadcrumbs';
 import FilterByCategory from '../FilterByCategory';
+import CartItemsNumber from '../CartItemsNumber';
 
 
 class CategoryItem extends Component {
@@ -40,12 +41,20 @@ class CategoryItem extends Component {
                                     <ProductConsumer>
                                         { value => {
                                             const { sortedProductsCategoryItems } = value;
-
+                                            
+                                            if(sortedProductsCategoryItems.length === 0) {
+                                                return (
+                                                    <div className="mx-auto p-5 text-danger border border-danger">
+                                                        <h3>unfortunately no products matched your search parameters</h3>
+                                                    </div>
+                                                )
+                                            }
                                             return sortedProductsCategoryItems.map( product => {
                                                 return <Product key={product.id} product={product} />
                                             });
                                         }}
                                     </ProductConsumer>
+                                    <CartItemsNumber />
                                 </div>
                             </div>
                         </div>

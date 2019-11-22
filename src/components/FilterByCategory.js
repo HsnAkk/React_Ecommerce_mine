@@ -17,7 +17,7 @@ const FilterByCategory = () => {
                 <form>  
 
                     {/* price*/}
-                    <div className="form-group">
+                    <div className="form-group mb-5">
                         <label htmlFor="priceCategory">$ {priceCategory}</label>
                         <input  type="range" 
                                 name="priceCategory" 
@@ -32,7 +32,7 @@ const FilterByCategory = () => {
 
                     {/* extras */}
                     <div className="form-group">
-                        <div>
+                        <div className="mb-3">
                             <input  type="checkbox" 
                                     name="stockCategory"
                                     id="stockCategory"
@@ -41,7 +41,7 @@ const FilterByCategory = () => {
                             />
                             <label htmlFor="stockCategory" className="ml-2"> In Stock</label>
                         </div>
-                        <div>
+                        <div className="mb-3">
                             <input  type="checkbox" 
                                     name="newItemCategory"
                                     id="newItemCategory"

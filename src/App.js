@@ -9,6 +9,7 @@ import Contact from './components/ContactPage/Contact';
 import Error from './components/Error';
 import CategoryItem from './components/Shopping/CategoryItem';
 import Details from './components/Details';
+import Cart from './components/Cart/Cart';
 
 import './App.css';
 
@@ -24,6 +25,7 @@ class App extends Component {
           <Route exact path="/shop" component = { Shop } />
           <Route exact path="/shop/:category" component = { CategoryItem } />
           <Route  path="/details" component = { Details } />
+          <Route  path="/cart" component = { Cart } />
           <Route  path="/about" component = { About } />
           <Route  path="/blog" component = { Blog } />
           <Route  path="/contact" component = { Contact } />
