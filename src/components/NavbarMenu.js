@@ -32,7 +32,7 @@ import { ProductConsumer } from '../context';
                     const { cart } = value;
 
                     return (
-                        <div>
+                        <>
                             <NavWrapper className="navbar navbar-expand-md">
                                 <MdFormatAlignLeft className="mr-3" style={{fontSize: '20px', cursor: 'pointer'}} />
 
@@ -66,8 +66,9 @@ import { ProductConsumer } from '../context';
                                     </li>
                                 </ul>
                             </NavWrapper>
+                            
                             { this.state.login ? <LoginMenu  /> : null}
-                        </div>
+                        </>
                     )
                 }}
             </ProductConsumer>
@@ -77,16 +78,20 @@ import { ProductConsumer } from '../context';
 
 const NavWrapper = styled.nav`
     background: var(--mainWhite);
-    display: relative
+    border-bottom: 1px solid var(--mainYellow);
+    position: sticky;
+    top: 0;
     .nav-link {
         color: var(--mainBlack) !important;
         font-size: 1.2rem;
-        text-transform: capitalize;
+        text-transform: uppercase;
         transition: all 0.3s linear;
+        padding: 10px 0;
     }
     .nav-link:hover {
         color: var(--mainYellow) !important;
-        transform: scale(1.1)
+        transform: scale(1.2); 
+        background: #f5f5f5   
     }
     .nav-right {
         color: var(--mainBlack) !important;

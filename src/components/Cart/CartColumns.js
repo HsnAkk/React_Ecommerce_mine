@@ -25,6 +25,7 @@ const CartColumns = () => {
                     <p className="text-uppercase">total</p>
                 </div>
             </div>
+            <hr/>
         </div>
     )
 }

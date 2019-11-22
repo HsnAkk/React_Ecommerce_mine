@@ -106,10 +106,7 @@ class Details extends Component {
                                             <div className="col my-4 py-2">
                                                 <ButtonSpan title="Add to Cart" 
                                                     disabled={ inCart ? true : false } 
-                                                    onClick={ () => {   value.addToCart(id);
-                                                                        value.openModal(id);
-                                                                    }
-                                                            }
+                                                    onClick={ () => { value.addToCart(id); }}
                                                 >
                                                     { inCart ? <span>in cart</span> : <span>add cart</span>}
                                                 </ButtonSpan>

@@ -2,7 +2,7 @@ import React from 'react';
 import {FiShoppingCart } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Badge } from 'react-bootstrap';
+import { Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { ProductConsumer } from '../context';
 
 
@@ -14,10 +14,21 @@ const CartItemsNumber = () => {
 
                 return (
                     <DivNumber>
-                        <Link to="/cart" >
-                            <FiShoppingCart className="cartIcon"/>
-                            <Badge className="rounded-circle badgeIcon" variant="warning" style={{transform: "translate(-4px, -10px)"}} >{cart.length}</Badge>
-                        </Link>
+                        <OverlayTrigger
+                            key="top"
+                            placement="top"
+                            delay= "300"
+                            overlay={
+                                <Tooltip className="mb-3">
+                                Go to <strong>Cart</strong>.
+                                </Tooltip>
+                            }
+                        >
+                            <Link to="/cart" >
+                                <FiShoppingCart className="cartIcon"/>
+                                <Badge className="rounded-circle badgeIcon" variant="warning" style={{transform: "translate(-4px, -10px)"}} >{cart.length}</Badge>
+                            </Link>
+                        </OverlayTrigger>
                     </DivNumber>
                 )
             }}

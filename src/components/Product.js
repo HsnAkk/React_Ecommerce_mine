@@ -35,10 +35,7 @@ class Product extends Component {
                                     { discountRate ? <div className="discountItem">{discountRate} % </div> : null }
                                     <div className="cart-btn"
                                             disabled={ inCart ? true : false } 
-                                            onClick={ () => {   value.addToCart(id);
-                                                                value.openModal(id);
-                                                            }
-                                                    } 
+                                            onClick={ () => { value.addToCart(id); }} 
                                     >
                                     { inCart ? (<p className=" mb-0" style={{textTransform: 'uppercase'}} disabled >in cart</p>) :  (<><MdAddShoppingCart className="text-capitalize mr-2" style={{fontSize: '20px'}}/> add cart</>)}
                                     
@@ -53,39 +50,7 @@ class Product extends Component {
 
                     {discountRate ? <p className="px-2"><strong>$ {price}  </strong><span style={{textDecoration:'line-through', fontSize:'0.9rem', color:'grey'}}>{parseFloat(price*(100+discountRate)/100).toFixed(2)}</span></p> : <p className="px-2"><span style={{fontSize:'0.9rem', color:'grey'}}>From  </span><strong>$ {price}</strong></p>}
                 </div>
-                
-                
-        
-                
-
-
-                {/* <div className="card">
-                    <ProductConsumer>
-                        {(value) => (
-                            <div className="img-container p-5" onClick={ () => value.handleDetail(id)}>
-                                <Link to='/details'>
-                                    <img src={img} alt="product" className='card-img-top' />
-                                </Link>
-                                <button className="cart-btn" 
-                                        disabled={ inCart ? true : false } 
-                                        onClick={ () => {   value.addToCart(id);
-                                                            value.openModal(id);
-                                                        }
-                                                } 
-                                >
-                                { inCart ? (<p className="text-capitalize mb-0" disabled >in cart</p>) :  (<i className="fas fa-cart-plus"/>)}
-                                </button>
-                            </div>
-                        )}
-                        
-                    </ProductConsumer>
-                    <div className="card-footer d-flex justify-content-between">
-                        <p className="align-self-center mb-0">{title}</p>
-                        <h5 className="text-blue font-italic mb-0"><span className="mr-1">$</span>{price}</h5>
-                    </div>
-                </div> */}
             </div>
-           
         );
     }
 }

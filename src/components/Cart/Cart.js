@@ -17,7 +17,7 @@ class Cart extends Component {
                         const { cart } = value;
                         if (cart.length > 0) {
                             return (
-                                <div className="container">
+                                <div className="w-75 mx-auto">
                                     <Title title="your cart" subtitle="SHOP, in the name of love..." />
                                     <CartColumns />
                                     <CartList value= {value} />
