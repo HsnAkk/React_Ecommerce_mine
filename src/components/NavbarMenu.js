@@ -79,8 +79,8 @@ import { ProductConsumer } from '../context';
 const NavWrapper = styled.nav`
     background: var(--mainWhite);
     border-bottom: 1px solid var(--mainYellow);
-    position: sticky;
-    top: 0;
+    
+    
     .nav-link {
         color: var(--mainBlack) !important;
         font-size: 1.2rem;
