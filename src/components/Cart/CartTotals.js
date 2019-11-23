@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PayPalButton from './PayPalButton';
+// import PayPalButton from './PayPalButton';
 
 
 
@@ -36,7 +36,7 @@ const CartTotals = ({value, history}) => {
                             </tr>
                         </table>
 
-                        <PayPalButton total={cartTotal} clearCart={clearCart} history={history} />
+                        {/* <PayPalButton total={cartTotal} clearCart={clearCart} history={history} /> */}
                     </div>
                 </div>  
             </div>  
