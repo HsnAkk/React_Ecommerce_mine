@@ -5,7 +5,7 @@ import { ProductConsumer } from '../../context';
 import Breadcrumbs from '../Breadcrumbs';
 import FilterByCategory from '../FilterByCategory';
 import CartItemsNumber from '../CartItemsNumber';
-
+import ModalWarning from '../ModalWarning';
 
 class CategoryItem extends Component {
     
@@ -55,6 +55,7 @@ class CategoryItem extends Component {
                                         }}
                                     </ProductConsumer>
                                     <CartItemsNumber />
+                                    <ModalWarning />
                                 </div>
                             </div>
                         </div>

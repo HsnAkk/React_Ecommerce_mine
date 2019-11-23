@@ -6,7 +6,7 @@ import Title from '../Title';
 import Categories from './Categories';
 import FilterBy from '../FilterBy';
 import CartItemsNumber from '../CartItemsNumber';
-
+import ModalWarning from '../ModalWarning';
 
 class Shop extends Component {
     render() {
@@ -33,6 +33,7 @@ class Shop extends Component {
                             </div>
                         </div>
                         <CartItemsNumber />
+                        <ModalWarning />
                     </div>
                 </div>               
             </>

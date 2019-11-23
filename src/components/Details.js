@@ -11,7 +11,7 @@ import { FaRegHeart } from 'react-icons/fa';
 import { IoMdGitCompare } from 'react-icons/io';
 import { GoCheck } from 'react-icons/go';
 import CartItemsNumber from './CartItemsNumber';
-
+import ModalWarning from './ModalWarning';
 
 
 class Details extends Component {
@@ -147,6 +147,7 @@ class Details extends Component {
                                 </div>
                             </div>
                             <CartItemsNumber />
+                            <ModalWarning />
                         </div>
                     );
                 }}

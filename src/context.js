@@ -32,7 +32,7 @@ class ProductProvider extends Component {
         cartSubTotal: 0,
         cartTax: 0,
         cartTotal: 0,
-
+        modalOpen: false
     };
 
     componentDidMount() {
@@ -173,15 +173,24 @@ class ProductProvider extends Component {
         let tempProducts = [...this.state.products];
         const index = tempProducts.indexOf(this.getItem(id));
         const product = tempProducts[index];
-        product.inCart = true;
-        product.count = 1;
-        const price = product.price;
-        product.total = price;
-
-        this.setState( () => {
-            return {products: tempProducts, 
-                    cart: [...this.state.cart, product]};
-        }, () => { this.addTotals() });
+        if (product.inCart === false) {
+            
+            product.inCart = true;
+            product.count = 1;
+            const price = product.price;
+            product.total = price;
+    
+            this.setState( () => {
+                return {products: tempProducts, 
+                        cart: [...this.state.cart, product]};
+            }, () => { this.addTotals() });
+        }
+        else {
+            // alert('Product already added to cart');
+            this.setState({
+                modalOpen: true
+            })
+        }
     }
 
     addTotals = () => {
@@ -269,6 +278,12 @@ class ProductProvider extends Component {
         })
     }
 
+    closeModal = () => {
+        this.setState( () => {
+            return { modalOpen: false }
+        })
+    }
+
     
 
     render() {
@@ -283,7 +298,8 @@ class ProductProvider extends Component {
                                                 increment: this.increment,
                                                 decrement: this.decrement,
                                                 removeItem: this.removeItem,
-                                                clearCart: this.clearCart
+                                                clearCart: this.clearCart,
+                                                closeModal: this.closeModal
                                             }} >
                 { this.props.children }
             </ProductContext.Provider>

@@ -27,6 +27,7 @@ class Product extends Component {
             <div className="col-12 col-md-6 col-lg-4 col-xl-3 my-3">
                 <ProductConsumer>
                     {(value) => (
+                            <>
                                 <AnimationDiv onClick={ () => value.handleDetail(id)}>
                                     <Link to='/details'>
                                         <img className="img-fluid" src = {this.state.mouseOver ? img[1] : img[0]} alt="product" onMouseOver= {this.onMouseHandler} onMouseLeave= {this.onMouseHandler} width="100%"/>
@@ -34,13 +35,14 @@ class Product extends Component {
                                     { newItem ? <div className="newItem">new</div> : null }
                                     { discountRate ? <div className="discountItem">{discountRate} % </div> : null }
                                     <div className="cart-btn"
-                                            disabled={ inCart ? true : false } 
-                                            onClick={ () => { value.addToCart(id); }} 
+                                            
+                                            onClick={ () => { value.addToCart(id) }} 
                                     >
                                     { inCart ? (<p className=" mb-0" style={{textTransform: 'uppercase'}} disabled >in cart</p>) :  (<><MdAddShoppingCart className="text-capitalize mr-2" style={{fontSize: '20px'}}/> add cart</>)}
                                     
                                     </div>
                                 </AnimationDiv>
+                            </>
                                 )
                     }
                 </ProductConsumer>
@@ -119,6 +121,7 @@ const AnimationDiv = styled.div`
     .cart-btn:hover {
         background: var(--mainYellow);
         color: white;
+        
     }
 `;
 

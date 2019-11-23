@@ -1,7 +1,8 @@
 import React from 'react';
 import {FiShoppingCart } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { zoomIn} from 'react-animations';
 import { Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { ProductConsumer } from '../context';
 
@@ -13,6 +14,7 @@ const CartItemsNumber = () => {
                 const { cart } = value;
 
                 return (
+                    cart.length > 0 ?
                     <DivNumber>
                         <OverlayTrigger
                             key="top"
@@ -30,13 +32,18 @@ const CartItemsNumber = () => {
                             </Link>
                         </OverlayTrigger>
                     </DivNumber>
+                    :
+                    null
                 )
             }}
         </ProductConsumer>
     )
 }
-    
+
+const ZoomInAnimation = keyframes`${zoomIn}`;
+
 const DivNumber = styled.div`
+    animation: infinite 3s ${ZoomInAnimation};
     background: var(--mainWhite);
     display: flex;
     justify-content: center;
